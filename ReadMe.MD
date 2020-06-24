@@ -81,4 +81,4 @@ tweet_text = pd.DataFrame(data=users_locs,
 tweet_text.to_csv(r"D:\Documents\Regis\practicum_s1\center_tweets\center_Tweets_15_5.csv") 
 ```
 
-![](/https://bitbucket.org/Xderic/center/downloads/output_example.PNG)
+![](/https://github.com/Xderic2/center_tweets/blob/master/output_example.PNG)
