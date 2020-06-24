@@ -19,11 +19,14 @@
 #### I used a bash cript to run my python script twice a day. 
 #### I enjoy using cron tabs and found it easiest. 
 
+<p>&nbsp;</p>
+
 ```bash
 0   */12   *   *   *   mypythonscript
 ```
 ## Python Script to gather data
 
+<p>&nbsp;</p>
 
 ```python
 import os
@@ -34,6 +37,7 @@ from stop_words import get_stop_words
 ```
 #### Credentials of the twitter api. 
 
+<p>&nbsp;</p>
 
 ```python
 
@@ -43,6 +47,7 @@ ACCESS_TOKEN = ACCESS_TOKEN
 ACCESS_TOKEN_SECRET = ACCESS_TOKEN_SECRET
 
 ```
+<p>&nbsp;</p>
 
 #### Here we list the search words we're looking for. The "q" argument of tweepy takes the "OR" 
 #### statement as a comma would in a list.
@@ -52,6 +57,7 @@ ACCESS_TOKEN_SECRET = ACCESS_TOKEN_SECRET
 #### With tweepy I could grab 30,000 per day, I did so in 15k chunks. I did this because sometimes it would have a bad call
 #### and stop everything. Since it took a good amount of time, I thought it easier to minimize losses.
 
+<p>&nbsp;</p>
 
 ```python
 
@@ -71,6 +77,8 @@ tweets = tw.Cursor(api.search,
 #### Location, in case anything can be gleamed from it. Number of followers per that account, and text of the actual tweet.
 #### All the objects can be found here https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/tweet-object
 
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
 ```python
 
@@ -80,5 +88,14 @@ tweet_text = pd.DataFrame(data=users_locs,
                     columns=['user', "location","followers","text"])
 tweet_text.to_csv(r"D:\Documents\Regis\practicum_s1\center_tweets\center_Tweets_15_5.csv") 
 ```
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
-![](/https://github.com/Xderic2/center_tweets/blob/master/output_example.PNG)
+![](https://github.com/Xderic2/center_tweets/blob/master/Images_reee/output_example.PNG)
+
+<p>&nbsp;</p>
+
+#### I added a replace command to comb through the column to eradicate any not wanted text. 
+```python
+tweet_text = tweet_text['text'].str.replace(',|\$€¦', '')
+```
