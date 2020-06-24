@@ -99,3 +99,30 @@ tweet_text.to_csv(r"D:\Documents\Regis\practicum_s1\center_tweets\center_Tweets_
 ```python
 tweet_text = tweet_text['text'].str.replace(',|\$€¦', '')
 ```
+#### After the clean up and some touching up to make sure the output it great for the correct text editor we were using. This was the output and text file.
+
+![](https://github.com/Xderic2/center_tweets/blob/master/Images_reee/clean_text.PNG)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
