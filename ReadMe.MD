@@ -103,13 +103,80 @@ tweet_text = tweet_text['text'].str.replace(',|\$€¦', '')
 
 ![](https://github.com/Xderic2/center_tweets/blob/master/Images_reee/clean_text.PNG)
 
+#### After the initial cleanup. I wanted to see what words were the most used.
+
+<p>&nbsp;</p>
+
+```python
+from collections import Counter
+import pandas as pd
+import nltk
+
+top_N = 25
+
+df = pd.read_csv(r"D:\Documents\Regis\practicum_s1\center_tweets\center_Tweets_15_all_sheets.csv",
+                 usecols=['text'])
+
+df['text'] = df['text'].str.replace(",|\$€¦'.", '')
+
+pd.Series(' '.join(df['text']).lower().split()).value_counts()[:10]
 
 
+stopwords = nltk.corpus.stopwords.words('english')
+# RegEx for stopwords
+RE_stopwords = r'\b(?:{})\b'.format('|'.join(stopwords))
+# replace '|'-->' ' and drop all stopwords
+words = (df.text.str.lower().replace([r'\|', RE_stopwords], [' ', ''], regex=True).str.cat(sep=' ').split()
+)
 
+# generate DF out of Counter
+rslt = pd.DataFrame(Counter(words).most_common(top_N),
+                    columns=['Word', 'Frequency']).set_index('Word')
+print(rslt)
 
+# plot
+rslt.plot.bar(rot=0, figsize=(25,15), width=0.8)
+rslt.
 
+```
 
+![](https://github.com/Xderic2/center_tweets/blob/master/Images_reee/top_25_words.PNG)
 
+```python
+                  Frequency
+Word                       
+leader                24641
+'                      8993
+.                      4080
+managers               3733
+@realdonaldtrump       3498
+like                   2908
+best                   2760
+one                    2661
+leader.                2593
+people                 2230
+bosses                 2048
+-                      1998
+directors              1905
+great                  1903
+would                  1629
+new                    1535
+good                   1467
+know                   1466
+trump                  1414
+think                  1394
+get                    1381
+us                     1345
+need                   1285
+world                  1209
+want                   1141
+
+```
+
+<p>&nbsp;</p>
+
+#### Two things that stick out. They were talking about donald Trump to a large degree (negative or poisitive, can't tell from this). They were also talking about work.
+#### references to directors, and bosses were in there quite a bit. "best" was also high up on the count, so most of the leader references might be positive.
 
 
 
