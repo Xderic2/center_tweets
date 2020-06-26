@@ -88,7 +88,8 @@ tweet_text = pd.DataFrame(data=users_locs,
                     columns=['user', "location","followers","text"])
 tweet_text.to_csv(r"D:\Documents\Regis\practicum_s1\center_tweets\center_Tweets_15_5.csv") 
 ```
-#### A sample of one of these pulls can be found under "center_tweets_output" as a csv in this Github
+#### A sample of one of these pulls can be found under "center_tweets_output" as a csv in this Github or here through google sheets
+#### https://docs.google.com/spreadsheets/d/1FKY0vHKDhSIfEyiJ4VNXn-jNItubhpTLkDtSyPocVIg/edit?usp=sharing
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
