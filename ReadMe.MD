@@ -178,6 +178,70 @@ want                   1141
 #### Two things that stick out. They were talking about donald Trump to a large degree (negative or poisitive, can't tell from this). They were also talking about work.
 #### references to directors, and bosses were in there quite a bit. "best" was also high up on the count, so most of the leader references might be positive.
 
+<p>&nbsp;</p>
+
+#### Next, I was curious how many words were actually used when describing their thoughts
+#### I de
+
+```python
+count = df['text'].str.split().apply(len).value_counts()
+count.index = count.index.astype(str) + ' words:'
+count.sort_index(inplace=True)
+count
+```
+
+```python
+1 words:	104
+2 words:	250
+3 words:	616
+4 words:	983
+5 words:	1075
+6 words:	1136
+7 words:	1120
+8 words:	1234
+9 words:	1481
+10 words:	1584
+11 words:	1531
+12 words:	1605
+13 words:	1739
+14 words:	1968
+15 words:	2223
+16 words:	2795
+17 words:	3648
+18 words:	4589
+19 words:	5744
+20 words:	6206
+21 words:	5919
+22 words:	4825
+23 words:	3488
+24 words:	2187
+25 words:	1091
+26 words:	496
+27 words:	231
+28 words:	86
+29 words:	27
+30 words:	7
+31 words:	5
+32 words:	6
+33 words:	1
+```
+#### I then ran The ludwig model. This did a lot of the backend stuff for me.
+#### below is the colab I used for this since the bbc-text file I used to train the model was importated via gtools in colab.
+#### I went with a model that could be trained with other text, because I could not physically label my newly formed twitter data. 
+#### I also didn't want to do an unsupervised approach because I wanted control over what that labels were going to be and how the classifier would clasify.
+
+https://colab.research.google.com/drive/1Qd1Z83DSNj2UK_ScakFfg3WUe7d4Bp_n?usp=sharing
+
+
+
+
+
+
+
+
+
+
+
 
 
 
